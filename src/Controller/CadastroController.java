@@ -3,6 +3,7 @@ package Controller;
 import Model.Colaborador;
 import Model.EnumFuncoes;
 import Model.EnumTipoPessoa;
+import Model.Fornecedor;
 import java.awt.event.ActionEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -85,6 +86,12 @@ public class CadastroController {
             colaborador.setUsuario(txtSenha.getText());
 
             ColaboradorDAO.Add(colaborador);
+        }else{
+            Fornecedor fornecedor = new Fornecedor();
+            
+            fornecedor.setNome(txtNome.getText());
+            
+            FornecedorDAO.Add(fornecedor);
         }
     }
 

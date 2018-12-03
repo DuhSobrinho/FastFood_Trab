@@ -7,7 +7,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="473.0" prefWidth="800.0" style="-fx-background-color: #ddd;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Cadastro_ProdutoController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="473.0" prefWidth="800.0" style="-fx-background-color: #ddd;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.Cadastro_ProdutoController">
    <children>
       <Pane layoutX="32.0" layoutY="98.0" prefHeight="167.0" prefWidth="741.0" style="-fx-background-color: lightgrey; -fx-background-radius: 5;">
          <children>

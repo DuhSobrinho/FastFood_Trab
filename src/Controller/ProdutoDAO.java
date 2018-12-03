@@ -1,9 +1,7 @@
 package Controller;
 
 import Infra.ConnectionFactory;
-import Model.Estoque;
-import com.sun.jmx.mbeanserver.Util;
-import java.math.BigDecimal;
+import Model.Produto;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,25 +12,24 @@ import java.util.List;
  *
  * @author Eduardo
  */
-public class EstoqueDAO {
-    private Connection con;
+public class ProdutoDAO {
    
-    public  EstoqueDAO(){
+    public  ProdutoDAO(){
     }
     
-    public void Add(Estoque estoque) throws Exception {
+    public static void Add(Produto produto) throws Exception {
         try {
-            String sql = "INSERT INTO Estoque (cod_Item_Estoque, nome, funcao) "
+            String sql = "INSERT INTO Produto (cod_Item_Estoque, nome, funcao) "
                                     + "VALUES (?,?,?)" ;
 
-            con = ConnectionFactory.conectaBanco();
+            Connection con = ConnectionFactory.conectaBanco();
             
             PreparedStatement ps = con.prepareStatement(sql);
             
-            ps.setInt(1, estoque.getCod_Item_Estoque());
-            ps.setString(2, estoque.getDescricao());
-            ps.setDouble(3, estoque.getQuantidade());
-            ps.setString(4, estoque.getTipo_Quantidade());
+            ps.setInt(1, produto.getCod_Item_Estoque());
+            ps.setString(2, produto.getDescricao());
+            ps.setDouble(3, produto.getQuantidade());
+            ps.setString(4, produto.getNome());
             
             ps.execute();
             
@@ -41,27 +38,27 @@ public class EstoqueDAO {
         }
     };
     
-    public List<Estoque> listaEstoque() throws Exception {
+    public static List<Produto> listaEstoque() throws Exception {
 
         String sql = "SELECT *" +
-                       "FROM Estoque";
+                       "FROM Produto";
 
-        con = ConnectionFactory.conectaBanco();
+        Connection con = ConnectionFactory.conectaBanco();
 
         PreparedStatement stmt = con.prepareStatement(sql);
 
         ResultSet rs = stmt.executeQuery();
 
-        List<Estoque> listaEstoque = new ArrayList<>();
+        List<Produto> listaEstoque = new ArrayList<>();
 
         while (rs.next()) {
 
-            Estoque estoque = new Estoque();
+            Produto estoque = new Produto();
 
             estoque.setCod_Item_Estoque(rs.getInt("Cod_Item_Estoque"));
             estoque.setDescricao(rs.getString("Descricao"));
             estoque.setQuantidade(rs.getInt("Quantidade"));
-            estoque.setTipo_Quantidade(rs.getString("Tipo_Quantidade"));
+            estoque.setNome(rs.getString("Nome"));
 
             listaEstoque.add(estoque);
         }
@@ -69,15 +66,15 @@ public class EstoqueDAO {
         return listaEstoque;
     };
     
-    public void Delete(int cod_Colaborador) throws Exception {
+    public static void Delete(int cod_Produto) throws Exception {
         try {
-            String sql = "DELETE Estoquees WHERE cod_Colaborador = ?)";
+            String sql = "DELETE Produto WHERE cod_Produto = ?)";
 
-            con = ConnectionFactory.conectaBanco();
+            Connection con = ConnectionFactory.conectaBanco();
             
             PreparedStatement ps = con.prepareStatement(sql);
             
-            ps.setInt(1, cod_Colaborador);
+            ps.setInt(1, cod_Produto);
             
             ps.execute();
             
